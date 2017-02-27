@@ -15,7 +15,7 @@ router.post('/jokes', function(req, res) {
 });
 router.get('/jokes', function(req, res, next) {
   
-  res.render('jokes', myJokes);
+  res.render('jokes');
 });
 
 module.exports = router;
