@@ -2,8 +2,12 @@ extends layout
 
 block content
   h1 Joke Sessions
-  p #{msg}
+
   ul
+    for book in myJokes
+      li= book
+    else
+      li sorry, no jokes!
   form(name="jokeForm", method="post")
         input(type="text", name="joke")
         input(type="submit")
