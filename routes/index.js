@@ -3,28 +3,18 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log("req.session.testMessage: " + req.session.testMessage);
-  // As a test I am going to save something on the users session. The users session
-  // gets added to the request object for easy access.
-
-  if (!req.session.hasOwnProperty('testMessage')) {
-    // ok I have a session but it doesn't have the property 'testMessage' because
-    // it is a new session
-    console.log("Session is new");
-    req.session.testMessage = "If you see this then you have a working session object";
-  } else {
-
-    req.session.testMessage = "This is an old session";
-  }
   
-
-  res.render('index', { title: 'Session Test' });
+  res.render('index', { title: 'Joke session' });
 });
-
-router.get('/sessionTest', function(req, res, next) {
-  // Lets get the testMessage that we stored on the users session
-  // and pass it to the testSession jade page
-  res.render('testSession',{msg: req.session.testMessage});
+router.post('/jokes', function(req, res) {
+  req.session.jokeMsg = req.body.joke;
+  res.render('jokes',{msg: req.session.testMessage});
+});
+router.get('/jokes', function(req, res, next) {
+  if (!req.session.hasOwnProperty('jokeMsg')) {
+    req.session.jokeMsg = "new";
+  } 
+  res.render('jokes',{msg: req.session.testMessage});
 });
 
 module.exports = router;
