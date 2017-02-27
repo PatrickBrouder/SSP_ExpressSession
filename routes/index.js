@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var myJokes =  req.session.myJokes ||  [];
+var myJokes = [];
 
 router.get('/', function(req, res, next) {
   
