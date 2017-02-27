@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-req.session.myJokes = [];
+
 
 router.get('/', function(req, res, next) {
   
@@ -13,7 +13,9 @@ router.post('/jokes', function(req, res) {
   res.render('jokes',{ jokeList: req.session.myJokes });
 });
 router.get('/jokes', function(req, res, next) {
-  
+  if (!req.session.myJokes) {
+         req.session.myJokes = [];
+  } 
   res.render('jokes',{ jokeList: req.session.myJokes });
 });
 
