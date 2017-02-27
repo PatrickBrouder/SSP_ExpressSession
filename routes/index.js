@@ -1,14 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-//var myJokes = req.session.titles || [];
+var myJokes = req.session.myJokes || [];
 
 router.get('/', function(req, res, next) {
   
   res.render('index', { title: 'Joke session' });
 });
 router.post('/jokes', function(req, res) {
-  var myJokes = req.session.myJokes || [];
   req.session.jokeMsg = req.body.joke;
   myJokes.push(req.session.jokeMsg);
   res.render('jokes',{ jokeList: myJokes });
