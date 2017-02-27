@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var myJokes = req.session.myJokes || [];
+req.session.myJokes = [];
 
 router.get('/', function(req, res, next) {
   
@@ -9,12 +9,12 @@ router.get('/', function(req, res, next) {
 });
 router.post('/jokes', function(req, res) {
   req.session.jokeMsg = req.body.joke;
-  myJokes.push(req.session.jokeMsg);
-  res.render('jokes',{ jokeList: myJokes });
+  req.session.myJokes.push(req.session.jokeMsg);
+  res.render('jokes',{ jokeList: req.session.myJokes });
 });
 router.get('/jokes', function(req, res, next) {
   
-  res.render('jokes',{ jokeList: myJokes });
+  res.render('jokes',{ jokeList: req.session.myJokes });
 });
 
 module.exports = router;
