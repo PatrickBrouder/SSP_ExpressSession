@@ -8,10 +8,10 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Joke session' });
 });
 router.post('/jokes', function(req, res) {
-  var joke1=  req.body.joke
-  req.session.jokeMsg = joke1;
-  var myjoke= req.session.jokeMsg;
-  myJokes.push(myjoke);
+  //var joke1=  req.body.joke
+  req.session.jokeMsg = req.body.joke;
+  //var myjoke= req.session.jokeMsg;
+  myJokes.push(req.session.jokeMsg);
   res.render('jokes',{ jokeList: myJokes });
 });
 router.get('/jokes', function(req, res, next) {

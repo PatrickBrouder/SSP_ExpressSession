@@ -6,8 +6,6 @@ block content
   ul
     for joke in jokeList
       li= joke
-    else
-      li sorry, no jokes!
   form(name="jokeForm", method="post")
         input(type="text", name="joke")
         input(type="submit")
