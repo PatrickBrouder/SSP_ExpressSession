@@ -7,7 +7,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Joke session' });
 });
 router.post('/jokes', function(req, res) {
-  req.session.jokeMsg = req.body.joke;
+  var joke1=  req.body.joke
+  req.session.jokeMsg = joke1;
   res.render('jokes',{msg: req.session.testMessage});
 });
 router.get('/jokes', function(req, res, next) {
