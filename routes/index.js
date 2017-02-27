@@ -12,11 +12,11 @@ router.post('/jokes', function(req, res) {
   req.session.jokeMsg = joke1;
   var myjoke= req.session.jokeMsg;
   myJokes.push(myjoke);
-  res.render('jokes',{ data: myJokes });
+  res.render('jokes',{ jokeList: myJokes });
 });
 router.get('/jokes', function(req, res, next) {
   
-  res.render('jokes',{ data: myJokes });
+  res.render('jokes',{ jokeList: myJokes });
 });
 
 module.exports = router;
