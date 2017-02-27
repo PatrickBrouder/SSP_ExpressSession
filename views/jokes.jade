@@ -4,8 +4,8 @@ block content
   h1 Joke Sessions
 
   ul
-    for book in myJokes
-      li= book
+    for joke in myJokes
+      li= joke
     else
       li sorry, no jokes!
   form(name="jokeForm", method="post")
