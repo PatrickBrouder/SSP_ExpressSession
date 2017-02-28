@@ -49,9 +49,6 @@ app.use(cookieParser());
  */
 
 var expressSessionOptions = {
-  cookie : {
-      maxAge: 1000*60 
-  },
   secret:'mySecret',
   resave: false,
   saveUninitialized: false
