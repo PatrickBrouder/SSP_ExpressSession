@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 router.post('/jokes', function(req, res) {
   req.session.jokeMsg = req.body.joke;
   req.session.myJokes.push(req.session.jokeMsg);
-  res.render('jokes',{ jokeList: req.session.myJokes });
+  res.redirect('/jokes');
 });
 router.get('/jokes', function(req, res, next) {
   if (!req.session.myJokes) {
