@@ -4,7 +4,9 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  
+  if (!req.session.myJokes) {
+         req.session.myJokes = [];
+  } 
   res.render('index', { title: 'Joke session' });
 });
 router.post('/jokes', function(req, res) {
@@ -13,9 +15,7 @@ router.post('/jokes', function(req, res) {
   res.redirect('/jokes');
 });
 router.get('/jokes', function(req, res, next) {
-  if (!req.session.myJokes) {
-         req.session.myJokes = [];
-  } 
+  
   res.render('jokes',{ jokeList: req.session.myJokes });
 });
 
